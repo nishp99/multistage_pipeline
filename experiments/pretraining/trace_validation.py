@@ -67,7 +67,7 @@ DEFAULTS = dict(
 )
 QUICK = dict(
     dimension=40,
-    steps=60,
+    steps=3000,
     lae_trials=2,
     pca_trials=3,
     lae_alphas=[0.5, 1.5],
