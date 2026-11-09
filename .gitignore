@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Numerical results and local notebook checkpoints
+outputs/
+.DS_Store
