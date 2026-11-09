@@ -116,4 +116,8 @@ def trajectory(cfg, geometry, sft_epochs, rl_epochs, steps=None):
         phase = "sft" if end <= switch else "rl"
         state = advance(state, geometry, step_args(cfg), end - start, phase)
         states.append(np.asarray(state))
+    if not np.isfinite(states).all():
+        raise ArithmeticError(
+            "Non-finite compact ODE state; inspect phase settings and closure geometry."
+        )
     return Trajectory(times, np.stack(states), switch)

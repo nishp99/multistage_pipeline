@@ -94,3 +94,13 @@ def test_five_moments_use_converged_higher_order_quadrature():
     )
     assert moments.shape == (5,)
     assert np.all(np.diff(moments) < 0) and 0 < moments[-1] < moments[0] < 0.2
+
+
+def test_reduced_allocation_replay_has_finite_schedules():
+    from experiments.allocation.optimized_trajectories import DEFAULTS, SMALL, compute
+
+    result = compute(DEFAULTS | SMALL | {"quick": True})
+    for i in range(len(SMALL["budgets"])):
+        assert np.isfinite(result[f"conditional_{i}"]).all()
+        assert np.isfinite(result[f"simulation_{i}"]).all()
+        assert result[f"switch_step_{i}"] in result[f"steps_{i}"]

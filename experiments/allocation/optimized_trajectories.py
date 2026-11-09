@@ -21,9 +21,9 @@ DEFAULTS = BASE | dict(
 )
 SMALL = QUICK | dict(
     cost=30.0,
-    alpha_min=0.4,
+    alpha_min=0.9,
     alpha_max=1.5,
-    budgets=[26.0, 48.0, 75.0],
+    budgets=[34.0, 48.0, 75.0],
     simulation_dimension=40,
     batches=2,
     replicas=2,

@@ -123,6 +123,12 @@ def simulate(cfg, basis, teacher, student, sft_epochs, rl_epochs, seed, steps=No
         )
         spectral.append(spectral_state(np.asarray(w), fields, cfg.dimension))
         conditional.append(np.asarray(state))
+    if not np.isfinite(spectral).all() or (
+        cfg.optimal and not np.isfinite(conditional).all()
+    ):
+        raise ArithmeticError(
+            f"Non-finite simulated state or adaptive-rate ODE at seed {seed}."
+        )
     s = np.stack(spectral)
     compact = np.stack((s[:, 1], s[:, 0] - s[:, 1], s[:, 4], s[:, 3] - s[:, 4]), axis=1)
     return Simulation(times, compact, np.stack(conditional), s, switch)
