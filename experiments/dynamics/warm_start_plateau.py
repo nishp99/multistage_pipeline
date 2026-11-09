@@ -1,6 +1,5 @@
 """E07. Pure RL and RL after a short SFT warm start."""
 
-import numpy as np
 import matplotlib.pyplot as plt
 from experiments.common import run
 from experiments.dynamics.shared import theory_geometry

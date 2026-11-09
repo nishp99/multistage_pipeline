@@ -2,7 +2,7 @@
 
 import numpy as np
 from jax import random
-from multistage_pipeline.dynamics.pipeline import accuracy, trajectory
+from multistage_pipeline.dynamics.pipeline import trajectory
 from multistage_pipeline.dynamics.simulation import simulate
 from multistage_pipeline.pretraining.projector import (
     pca_basis,

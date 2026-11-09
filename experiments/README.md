@@ -59,4 +59,4 @@ Comparisons used the original research outputs or workers as migration reference
 | E14 dimension fits on the original α=0.5 disorder means | Maximum absolute slope difference `9.1e-15` across 20 checkpoints, both contractions, and both coefficient sources |
 | Six-state trajectory, D=800, α=0.5, 100 SFT epochs and two RL epochs, versus the stable branch on matched geometry | Maximum absolute terminal-state difference `2.3e-16` |
 
-These checks exercise selected full-setting calculations. The command-level release check uses the reduced presets across all experiments.
+These checks exercise selected full-setting calculations. The command-level release check uses the reduced presets across all experiments. The complete Fig. 4a preset also finished with finite trajectories for all four warm starts, at four million microscopic updates per trajectory.

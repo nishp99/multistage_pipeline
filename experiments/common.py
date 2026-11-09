@@ -6,14 +6,12 @@ import os
 from pathlib import Path
 import tempfile
 
-import matplotlib
-
-matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 
 
 def run(description, name, defaults, quick_defaults, compute, plot):
+    plt.switch_backend("Agg")
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument(
         "--quick",

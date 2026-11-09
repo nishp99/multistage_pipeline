@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import math
 import time
+import warnings
 from functools import lru_cache
 from itertools import combinations, product
 from typing import Dict
@@ -637,7 +638,6 @@ def lower_order_traces(
     window = find_window(alpha, rho, Delta)
 
     lam_cut = window["lambda_cut"]
-    lam_max = window["lambda_max"]
     lam_edge = window["lambda_edge"]  # true upper spectral edge (density → 0 here)
 
     # ------------------------------------------------------------------ #
@@ -721,7 +721,6 @@ def lower_order_traces(
     tr_qmqmqm_pair_over_D = 3.0 * jnp.einsum("i,i,ij,j->", w2d, w_fn_2d, k2_reg, w2d)
 
     tr_qmqm_over_D = tr_qmqm_diag_over_D + tr_qmqm_off_over_D
-    tr_qmqm_over_K = tr_qmqm_over_D / (1.0 - rho)
 
     # ------------------------------------------------------------------ #
     # Three-point distinct term on the sqrt-substituted GL grid, with a

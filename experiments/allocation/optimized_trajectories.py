@@ -3,7 +3,6 @@
 import matplotlib.pyplot as plt
 from dataclasses import replace
 from experiments.common import run
-import numpy as np
 from multistage_pipeline.allocation.search import optimize
 from experiments.allocation.shared import BASE, QUICK, model, table, row
 from experiments.dynamics.shared import ensemble, batch_summary

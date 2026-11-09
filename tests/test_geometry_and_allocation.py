@@ -76,3 +76,21 @@ def test_fixed_alpha_and_residual_fit():
     slopes, ci = scaling(values, dims, 100, np.random.default_rng(123))
     np.testing.assert_allclose(slopes, -0.5, atol=1e-13)
     np.testing.assert_allclose(ci, -0.5, atol=1e-13)
+
+
+def test_five_moments_use_converged_higher_order_quadrature():
+    from multistage_pipeline.pretraining.traces import five_moments
+
+    moments = five_moments(
+        0.5,
+        0.2,
+        0.1,
+        n_grid1d=256,
+        n_grid2=32,
+        n_grid3=20,
+        integration_options=dict(
+            powers=(9, 11, 13), scrambles=4, batch_size=1024, atol=0.003, rtol=0.1
+        ),
+    )
+    assert moments.shape == (5,)
+    assert np.all(np.diff(moments) < 0) and 0 < moments[-1] < moments[0] < 0.2
